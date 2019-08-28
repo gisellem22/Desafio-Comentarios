@@ -15,9 +15,11 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
   }
 
-  addComment() {
+  addComment(text) {
     if(this.comments.comment !=="" && this.comments.comment !==undefined) {
       this.commentsService.addComment(this.comments)
+      text ="";
+      console.log("soy text",text)
     }
   }
 }
