@@ -12,12 +12,19 @@ export class CommentsComponent implements OnInit {
 
   comments: Comment[];
 
-  constructor( public commentsService: CommentsService) { }
+  constructor(public commentsService: CommentsService) { }
 
   ngOnInit() {
     this.commentsService.getComments().subscribe(comments => {
       this.comments = comments;
+      console.log(comments)
     })
   }
 
+  
+
+
+  delete(comment) {
+    this.commentsService.deleteComment(comment)
+  }
 }

@@ -1,17 +1,4 @@
 <div class="container">
-    <form>
-        <div class="row justify-content-center" >
-            <div class="form-group col-12 col-sm-12 col-md-12 col-lg-12">
-                <textarea class="form-control" (input)="commentText($event.target.value)" id="comment-area"
-                    placeholder="Ingresa tu comentario" cols="30" rows="10"></textarea>
-                <div class="d-flex justify-content-end">
-                    <input type="button" class="btn btn-info mt-2 rounded-lg" 
-                    value="Enviar comentario">
-                </div>
-            </div>
-        </div>
-        <h3 class="mb-5">Comentarios</h3>
-    </form>
     <div *ngIf="comments">
     <div class="row border-bottom mb-4" *ngFor="let comment of comments">
             <div class="col-9 col-sm-9 col-md-9 col-lg-9">
@@ -19,7 +6,7 @@
                 </div>
                 <div class="col-3 col-sm-3 col-md-3 col-lg-3">
                         <div class="d-flex justify-content-end">
-                <input type="button" class="btn btn-info rounded-lg" value="Eliminar">
+                <input type="button" class="btn btn-info rounded-lg" value="Eliminar" (click)="delete(comment)">
                 </div>
             </div>
         </div>

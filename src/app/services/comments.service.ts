@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 import { Comment } from '../models/comment';
 
@@ -10,14 +11,31 @@ import { Comment } from '../models/comment';
 })
 export class CommentsService {
 
+  commentsCollection: AngularFirestoreCollection<Comment>;
   comments: Observable<Comment[]>;
-  commentsCollection;
-  commentDoc;
+  commentDoc: AngularFirestoreDocument<Comment>;
 
   constructor(public db: AngularFirestore) {
-    this.comments = this.db.collection("comments").valueChanges();
+    //this.comments = this.db.collection("comments").valueChanges();
+    this.commentsCollection = this.db.collection("comments");
+    this.comments = this.commentsCollection.snapshotChanges().pipe(map(actions => {
+      return actions.map(a=> {
+        const data = a.payload.doc.data() as Comment;
+        data.id = a.payload.doc.id;
+        return data;
+      })
+    }))
    }
    getComments() {
      return this.comments;
+   }
+
+   addComment (comment: Comment) {
+     this.commentsCollection.add(comment)
+   }
+
+   deleteComment(comment: Comment) {
+     this.commentDoc = this.db.doc(`comments/${comment.id}`);
+     this.commentDoc.delete();
    }
 }

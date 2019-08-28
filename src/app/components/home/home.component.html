@@ -1,1 +1,14 @@
-<p>home works!</p>
+<div class="container">
+    <form>
+        <div class="row justify-content-center" >
+            <div class="form-group col-12 col-sm-12 col-md-12 col-lg-12">
+                <textarea class="form-control" name="comment" [(ngModel)]="comments.comment" placeholder="Ingresa tu comentario" cols="30" rows="10"></textarea>
+                <div class="d-flex justify-content-end">
+                    <input type="button" class="btn btn-info mt-2 rounded-lg" (click)="addComment()"
+                    value="Enviar comentario">
+                </div>
+            </div>
+        </div>
+        <h3 class="mb-5">Comentarios</h3>
+    </form>
+</div>
