@@ -9,17 +9,15 @@ import { Comment } from '../../models/comment'
 })
 export class HomeComponent implements OnInit {
   comments = {} as Comment;
-
   constructor(public commentsService: CommentsService) { }
 
   ngOnInit() {
   }
 
-  addComment(text) {
+  addComment() {
     if(this.comments.comment !=="" && this.comments.comment !==undefined) {
       this.commentsService.addComment(this.comments)
-      text ="";
-      console.log("soy text",text)
+      this.comments = {} as Comment;
     }
   }
 }
