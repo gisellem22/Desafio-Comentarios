@@ -1,3 +1,9 @@
+.text-center {
+    color:white;
+}
 textarea {
     resize: none;
- }
+}
+h1,h2,h3,h4,h5 {
+    color: white;
+}

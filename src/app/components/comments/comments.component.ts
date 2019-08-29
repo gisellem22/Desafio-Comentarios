@@ -21,9 +21,6 @@ export class CommentsComponent implements OnInit {
     })
   }
 
-  
-
-
   delete(comment) {
     this.commentsService.deleteComment(comment)
   }
