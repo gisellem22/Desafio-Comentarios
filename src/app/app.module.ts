@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { CommentsComponent } from './components/comments/comments.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { HomeComponent } from './components/home/home.component';
+import { CommentsFormComponent } from './components/comments-form/comments-form.component';
+
 import { AppRoutingModule } from './app-routing.module';
 
 //Conexión con Firebase
@@ -19,7 +21,8 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
     AppComponent,
     CommentsComponent,
     PageNotFoundComponent,
-    HomeComponent
+    HomeComponent,
+    CommentsFormComponent
   ],
   imports: [
     BrowserModule,

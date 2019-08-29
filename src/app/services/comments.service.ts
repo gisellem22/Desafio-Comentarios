@@ -16,8 +16,9 @@ export class CommentsService {
   commentDoc: AngularFirestoreDocument<Comment>;
 
   constructor(public db: AngularFirestore) {
-    //this.comments = this.db.collection("comments").valueChanges();
-    this.commentsCollection = this.db.collection("comments");
+    this.commentsCollection = this.db.collection("comments"); 
+   }
+   getComments() {
     this.comments = this.commentsCollection.snapshotChanges().pipe(map(actions => {
       return actions.map(a=> {
         const data = a.payload.doc.data() as Comment;
@@ -25,11 +26,8 @@ export class CommentsService {
         return data;
       })
     }))
-   }
-   getComments() {
      return this.comments;
    }
-
    addComment (comment: Comment) {
      this.commentsCollection.add(comment)
    }
